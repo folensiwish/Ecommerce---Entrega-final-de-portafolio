@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'listar_producto' %}">
+            🚀 <span class="d-none d-sm-inline">Panel de Inventario</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAdmin" 
+            aria-controls="navbarNavAdmin" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAdmin">
+            <ul class="navbar-nav ms-auto"> <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'listar_producto' %}active fw-semibold{% endif %}" 
+                       href="{% url 'listar_producto' %}">
+                       <i class="bi bi-box-seam me-1"></i>Productos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.resolver_match.url_name == 'crear_producto' %}active fw-semibold{% endif %}" 
+                       href="{% url 'crear_producto' %}">
+                       <i class="bi bi-plus-circle me-1"></i>Nuevo
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

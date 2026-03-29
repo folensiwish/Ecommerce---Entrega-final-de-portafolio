@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-12 col-xs-6">
+        <div class="card shadow">
+            <div class="card-header bg-white py-3">
+                <h4 class="mb-0 fw-bold">
+                    {% if producto %}
+                    Editar
+                    {% else %}
+                    Nuevo
+                    {% endif %} Producto
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Nombre del Producto</label>
+                        <input type="text" name="nombre" class="form-control" value="{{ producto.nombre }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Categoría</label>
+                        <select name="categoria_id" class="form-select" required>
+                            <option value="">Seleccione...</option>
+                            {% for cat in categorias %}
+                                <option value="{{ cat.id }}" {% if producto.categoria.id == cat.id %}selected{% endif %}>
+                                    {{ cat.nombre }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Precio ($)</label>
+                            <input type="number" name="precio" class="form-control" value="{{ producto.precio }}" min="0" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Stock</label>
+                            <input type="number" name="stock" class="form-control" value="{{ producto.stock }}"  min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-3">
+                        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                        <a href="{% url 'listar_producto' %}" class="btn btn-link text-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
