@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content%}
+<header>
+    <div>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'img/hogar.jpg'%}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'img/muebes.webp'%}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'img/gym.jpeg'%}" class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+
+</div>
+<script src="{% static 'js/script.js'%}"></script>
+{% endblock %}

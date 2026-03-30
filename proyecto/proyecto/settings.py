@@ -45,7 +45,7 @@ LOCAL_APPS = [
     'apps.carrito'
 ]
 
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS 
 
 
 MIDDLEWARE = [
@@ -127,7 +127,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'apps/static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "apps" / "static",
+]
 LOGIN_REDIRECT_URL = 'listar_producto'
 LOGOUT_REDIRECT_URL = '/login/'
 
