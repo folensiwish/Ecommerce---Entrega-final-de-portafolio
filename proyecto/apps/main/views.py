@@ -10,6 +10,7 @@ def crear_producto(request):
     if request.method == 'POST':
         var_nombre = request.POST.get('nombre')
         var_precio = request.POST.get('precio')
+        var_descripcion = request.POST.get('descripcion')
         var_stock = request.POST.get('stock')
         var_cat_id = request.POST.get('categoria_id')
         
@@ -19,7 +20,7 @@ def crear_producto(request):
             return redirect('crear_producto')
         
         
-        Producto.objects.create( nombre=var_nombre, precio=var_precio, stock=var_stock, categoria_id=var_cat_id)
+        Producto.objects.create( nombre=var_nombre, precio=var_precio, descripcion=var_descripcion, stock=var_stock, categoria_id=var_cat_id)
         messages.success(request, "Producto creado con éxito")
         return redirect('listar_producto')
     
@@ -38,12 +39,13 @@ def editar_producto(request, id):
 
     if request.method == 'POST':
         var_nombre = request.POST.get('nombre')
-        var_precio = request.POST.ge('precio')
+        var_precio = request.POST.get('precio')
+        var_descripcion = request.POST.get('descripcion')
         var_stock =request.POST.get('stock')
         var_cat_id = request.POST.get('categoria_id')
     
       
-        producto_qs.update(nombre=var_nombre,precio=var_precio,stock=var_stock,categoria_id=var_cat_id)
+        producto_qs.update(nombre=var_nombre,precio=var_precio,descripcion=var_descripcion,stock=var_stock,categoria_id=var_cat_id)
         messages.success(request, "Producto actualizado correctamente")
         return redirect('listar_producto')
     

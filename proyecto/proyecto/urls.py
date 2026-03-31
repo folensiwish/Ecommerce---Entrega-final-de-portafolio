@@ -26,4 +26,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     #carrito
     path('carrito/', include('apps.carrito.urls')),
+    #catalogo
+    path('catalogo/', include('apps.catalogo.urls')),
 ]

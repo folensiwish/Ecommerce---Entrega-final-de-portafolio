@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from apps.main.models import Producto
 # Create your views here.
 
-def home(request):
-    return HttpResponse('Que pasa chuchetumare')
+def carrito(request):
+    carrito_prod = Producto.objects.all()
+    return render(request, 'carrito/carrito.html', context={
+        'carrito_prod':carrito_prod,})
